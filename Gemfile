@@ -27,6 +27,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'pry'
 gem 'awesome_print'
 gem 'delayed_job_active_record'
+gem 'capistrano'
+gem 'capistrano-rvm'
+gem 'capistrano-rails'
+gem 'capistrano-bundler'
+gem 'capistrano3-puma'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

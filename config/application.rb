@@ -11,9 +11,22 @@ module Serp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
     config.active_job.queue_adapter = :delayed_job
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration can go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded after loading
-    # the framework and any gems in your application.
+
+
+    Capybara.register_driver :chrome do |app|
+      Capybara::Selenium::Driver.new(app, browser: :chrome)
+    end
+
+    Capybara.register_driver :headless_chrome do |app|
+      capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+        chromeOptions: { args: %w( disable-gpu) }
+        )
+
+      Capybara::Selenium::Driver.new app,
+      browser: :chrome,
+      desired_capabilities: capabilities
+    end
+
+    Capybara.javascript_driver = :headless_chrome
   end
 end

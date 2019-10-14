@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2019_10_14_001538) do
   create_table "search_terms", force: :cascade do |t|
     t.string "term"
     t.string "timespan"
+    t.datetime "last_check"
+    t.integer "check_frequency"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
