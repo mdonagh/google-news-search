@@ -1,3 +1,4 @@
+<div class="form-group col-4 offset-4">
 <%= form_with(model: search_result, local: true) do |form| %>
   <% if search_result.errors.any? %>
     <div id="error_explanation">
@@ -13,15 +14,16 @@
 
   <div class="field">
     <%= form.label :search_term_id %>
-    <%= form.number_field :search_term_id %>
+    <%= form.number_field :search_term_id, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :total %>
-    <%= form.number_field :total %>
+    <%= form.number_field :total, class: 'form-control' %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+</div>

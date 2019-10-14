@@ -4,7 +4,7 @@ class SearchResultsController < ApplicationController
   # GET /search_results
   # GET /search_results.json
   def index
-    @search_results = SearchResult.all
+    @search_results = SearchResult.includes(:search_term).all
   end
 
   # GET /search_results/1

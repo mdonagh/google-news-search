@@ -10,6 +10,7 @@ class SearchTermsController < ApplicationController
   # GET /search_terms/1
   # GET /search_terms/1.json
   def show
+    @search_results = @search_term.search_results
   end
 
   # GET /search_terms/new

@@ -1,3 +1,4 @@
+<div class='col-4 offset-4'>
 <%= form_with(model: search_term, local: true) do |form| %>
   <% if search_term.errors.any? %>
     <div id="error_explanation">
@@ -13,25 +14,26 @@
 
   <div class="field">
     <%= form.label :term %>
-    <%= form.text_field :term %>
+    <%= form.text_field :term, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :timespan %>
-    <%= select_tag "search_term[timespan]", options_for_select([ "hour", "day", "week", "month", "year", 'all' ]) %>
+    <%= select_tag "search_term[timespan]", options_for_select([ "hour", "day", "week", "month", "year", 'all' ]), class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :last_check %>
-    <%= form.datetime_select :last_check %>
+    <%= form.datetime_select :last_check, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :check_frequency %>
-    <%= form.number_field :check_frequency %>
+    <%= form.number_field :check_frequency, class: 'form-control'  %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+</div>
