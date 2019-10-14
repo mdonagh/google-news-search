@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Term:</strong>
+  <%= @search_term.term %>
+</p>
+
+<p>
+  <strong>Timespan:</strong>
+  <%= @search_term.timespan %>
+</p>
+
+<%= link_to 'Edit', edit_search_term_path(@search_term) %> |
+<%= link_to 'Back', search_terms_path %>

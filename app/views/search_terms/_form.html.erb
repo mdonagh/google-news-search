@@ -1,0 +1,27 @@
+<%= form_with(model: search_term, local: true) do |form| %>
+  <% if search_term.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(search_term.errors.count, "error") %> prohibited this search_term from being saved:</h2>
+
+      <ul>
+      <% search_term.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :term %>
+    <%= form.text_field :term %>
+  </div>
+
+  <div class="field">
+    <%= form.label :timespan %>
+    <%= form.text_field :timespan %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
