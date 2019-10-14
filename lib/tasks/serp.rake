@@ -20,9 +20,10 @@ end
 
 Capybara.javascript_driver = :headless_chrome
     session = Capybara::Session.new(:selenium_chrome_headless)
-    session.visit 'https://www.google.com/search?q=dog+yoga&hl=en&tbm=nws&source=lnt&tbs=qdr:d'
+    session.visit get_search_url('dog yoga', 'year')
     results = session.find('#resultStats', visible: 'hidden').base.all_text.split(' ')[1].gsub(/[\s,]/ ,"").to_i
     puts results.inspect
+    Capybara.send(:session_pool).each { |name, ses| ses.driver.quit }
   end
 
 def get_search_url(search_term, timespan)
