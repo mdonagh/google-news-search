@@ -1,10 +1,10 @@
 # Change the 'YOUR_AZURE_VM_IP' to the publicIpAddress from the output of
 # `az vm create` command executed above
-server 'YOUR_AZURE_VM_IP', roles: [:web, :app, :db], primary: true
+server '168.61.17.14', roles: [:web, :app, :db], primary: true
 
 # Change the YOUR_GITHUB_NAME to your github user name
-set :repo_url,        'git@github.com:YOUR_GITHUB_NAME/level0.git'
-set :application,     'level0'
+set :repo_url,        'https://github.com/mdonagh/google-news-search.git'
+set :application,     'google-news-search'
 set :user,            'deploy'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
@@ -34,7 +34,7 @@ namespace :puma do
     end
   end
 
-  before :start, :make_dirs
+  # before :start, :make_dirs
 end
 
 namespace :deploy do
