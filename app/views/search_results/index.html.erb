@@ -6,6 +6,7 @@
     <tr>
       <th scope="col">Search term</th>
       <th scope="col">Total</th>
+      <th scope="col">Created At</th>
       <th scope="col">Show</th>
       <th scope="col">Edit</th>
       <th scope="col">Destroy</th>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= search_result.search_term.term %></td>
         <td><%= search_result.total %></td>
+        <td><%= search_result.created_at.to_formatted_s(:long) %></td>
         <td><%= link_to 'Show', search_result %></td>
         <td><%= link_to 'Edit', edit_search_result_path(search_result) %></td>
         <td><%= link_to 'Destroy', search_result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
