@@ -17,7 +17,7 @@ class SearchTermsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create search_term" do
     assert_difference('SearchTerm.count') do
-      post search_terms_url, params: { search_term: { term: @search_term.term, timespan: @search_term.timespan } }
+      post search_terms_url, params: { search_term: { check_frequency: @search_term.check_frequency, last_check: @search_term.last_check, term: @search_term.term, timespan: @search_term.timespan } }
     end
 
     assert_redirected_to search_term_url(SearchTerm.last)
@@ -34,7 +34,7 @@ class SearchTermsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update search_term" do
-    patch search_term_url(@search_term), params: { search_term: { term: @search_term.term, timespan: @search_term.timespan } }
+    patch search_term_url(@search_term), params: { search_term: { check_frequency: @search_term.check_frequency, last_check: @search_term.last_check, term: @search_term.term, timespan: @search_term.timespan } }
     assert_redirected_to search_term_url(@search_term)
   end
 

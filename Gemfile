@@ -31,6 +31,8 @@ gem 'capistrano-rvm'
 gem 'capistrano-rails'
 gem 'capistrano-bundler'
 gem 'capistrano3-puma'
+gem 'capistrano3-delayed-job', '~> 1.0'
+
 gem 'devise'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

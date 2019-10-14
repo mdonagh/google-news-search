@@ -39,6 +39,10 @@ namespace :puma do
 end
 
 namespace :deploy do
+  desc "Start job queue."
+  task :start_jobs do
+    invoke 'delayed_job:start'
+  end
   desc "Make sure local git is in sync with remote."
   task :check_revision do
     on roles(:app) do
@@ -50,6 +54,7 @@ namespace :deploy do
     end
   end
 
+
   task :symlink_secrets do
     on roles(:app) do
       execute "rm -rf #{release_path}/config/secrets.yml" 
@@ -60,6 +65,7 @@ namespace :deploy do
   before :starting,     :check_revision
   after  :finishing,    :symlink_secrets
   after  :finishing,    :compile_assets
+  after  :finishing,    :start_jobs
   after  :finishing,    :cleanup
 end
 

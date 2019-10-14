@@ -21,6 +21,16 @@
     <%= form.text_field :timespan %>
   </div>
 
+  <div class="field">
+    <%= form.label :last_check %>
+    <%= form.datetime_select :last_check %>
+  </div>
+
+  <div class="field">
+    <%= form.label :check_frequency %>
+    <%= form.number_field :check_frequency %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

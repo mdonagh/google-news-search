@@ -3,7 +3,11 @@
 one:
   term: MyString
   timespan: MyString
+  last_check: 2019-10-13 19:59:23
+  check_frequency: 1
 
 two:
   term: MyString
   timespan: MyString
+  last_check: 2019-10-13 19:59:23
+  check_frequency: 1

@@ -14,6 +14,8 @@ class SearchTermsTest < ApplicationSystemTestCase
     visit search_terms_url
     click_on "New Search Term"
 
+    fill_in "Check frequency", with: @search_term.check_frequency
+    fill_in "Last check", with: @search_term.last_check
     fill_in "Term", with: @search_term.term
     fill_in "Timespan", with: @search_term.timespan
     click_on "Create Search term"
@@ -26,6 +28,8 @@ class SearchTermsTest < ApplicationSystemTestCase
     visit search_terms_url
     click_on "Edit", match: :first
 
+    fill_in "Check frequency", with: @search_term.check_frequency
+    fill_in "Last check", with: @search_term.last_check
     fill_in "Term", with: @search_term.term
     fill_in "Timespan", with: @search_term.timespan
     click_on "Update Search term"

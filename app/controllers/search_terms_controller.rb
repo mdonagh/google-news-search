@@ -69,6 +69,6 @@ class SearchTermsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def search_term_params
-      params.require(:search_term).permit(:term, :timespan)
+      params.require(:search_term).permit(:term, :timespan, :last_check, :check_frequency)
     end
 end
