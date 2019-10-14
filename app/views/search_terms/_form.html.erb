@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :timespan %>
-    <%= form.text_field :timespan %>
+    <%= select_tag "search_term[timespan]", options_for_select([ "hour", "day", "week", "month", "year", 'all' ]) %>
   </div>
 
   <div class="field">
