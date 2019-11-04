@@ -12,6 +12,7 @@ module Serp
     config.load_defaults 5.2
     config.active_job.queue_adapter = :delayed_job
     config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+    WillPaginate.per_page = 10
 
     Capybara.register_driver :chrome do |app|
       Capybara::Selenium::Driver.new(app, browser: :chrome)

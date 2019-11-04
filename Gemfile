@@ -36,6 +36,7 @@ gem 'capistrano3-delayed-job', '~> 1.0'
 gem 'devise'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
+gem 'will_paginate', '~> 3.1.0'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

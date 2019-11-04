@@ -13,13 +13,8 @@
 </p>
 
 <p>
-  <strong>Last check:</strong>
-  <%= @search_term.last_check %>
-</p>
-
-<p>
   <strong>Check frequency:</strong>
-  <%= @search_term.check_frequency %>
+  <%= @search_term.check_frequency %> (Minutes)
 </p>
 
 <h1 >Search Results</h1>
@@ -45,6 +40,12 @@
     <% end %>
   </tbody>
 </table>
+  <div class="digg_pagination">
+    <div class="page_info">
+      <%= page_entries_info @search_results %>
+    </div>
+    <%= will_paginate @search_results, :container => false %>
+  </div>
 </div>
 
 
