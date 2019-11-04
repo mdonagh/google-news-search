@@ -10,7 +10,7 @@ class SearchTermsController < ApplicationController
   # GET /search_terms/1
   # GET /search_terms/1.json
   def show
-    @search_results = @search_term.search_results.paginate(page: params[:page])
+    @search_results = @search_term.search_results.order('created_at DESC').paginate(page: params[:page])
   end
 
   # GET /search_terms/new

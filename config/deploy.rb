@@ -1,6 +1,6 @@
 # Change the 'YOUR_AZURE_VM_IP' to the publicIpAddress from the output of
 # `az vm create` command executed above
-server '168.61.17.14', roles: [:web, :app, :db], primary: true
+server '13.64.75.72', roles: [:web, :app, :db], primary: true
 
 # Change the YOUR_GITHUB_NAME to your github user name
 set :repo_url,        'https://github.com/mdonagh/google-news-search.git'

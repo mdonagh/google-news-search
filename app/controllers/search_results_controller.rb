@@ -4,7 +4,7 @@ class SearchResultsController < ApplicationController
   # GET /search_results
   # GET /search_results.json
   def index
-    @search_results = SearchResult.includes(:search_term).all.paginate(page: params[:page])
+    @search_results = SearchResult.includes(:search_term).all.order('created_at DESC').paginate(page: params[:page])
   end
 
   # GET /search_results/1
