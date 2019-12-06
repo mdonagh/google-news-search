@@ -6,7 +6,6 @@ class GetSerpJob < ApplicationJob
     search_url = get_search_url(search_term.term, search_term.timespan)
     session = Capybara::Session.new(:selenium_chrome_headless)
     session.visit search_url
-    binding.pry
     result_total = session.find('#resultStats', visible: 'hidden').base.all_text.split(' ')[1].gsub(/[\s,]/ ,"").to_i
     SearchResult.create(search_term: search_term, total: result_total)
     search_term.update(last_check: Time.now)
