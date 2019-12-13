@@ -27,6 +27,7 @@
   </tbody>
 </table>
 
+<%= line_chart SearchTerm.group_by_day(:created_at).count %>
 <br>
 
 <%= link_to 'New Search Term', new_search_term_path %>

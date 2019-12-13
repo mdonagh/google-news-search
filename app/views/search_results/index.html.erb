@@ -25,6 +25,8 @@
     <% end %>
   </tbody>
 </table>
+<%= line_chart SearchResult.group_by_day(:created_at).count %>
+
   <div class="digg_pagination">
     <div class="page_info">
       <%= page_entries_info @posts %>
