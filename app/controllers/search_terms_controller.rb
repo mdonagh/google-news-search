@@ -72,5 +72,4 @@ class SearchTermsController < ApplicationController
     def search_term_params
       params.require(:search_term).permit(:term, :timespan, :last_check, :check_frequency)
     end
-
 end
