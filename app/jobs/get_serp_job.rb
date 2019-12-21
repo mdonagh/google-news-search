@@ -32,6 +32,7 @@ class GetSerpJob < ApplicationJob
     session.visit search_url
     puts session.body
     result_total = session.find('#resultStats', visible: 'hidden').base.all_text.split(' ')
+    puts "result_total: #{result_total}"
     if result_total.length == 3
       final_total = result_total[1].gsub(/[\s,]/ ,"").to_i
     else
@@ -39,7 +40,7 @@ class GetSerpJob < ApplicationJob
     end
     SearchResult.create(search_term: search_term, total: final_total)
     search_term.update(last_check: Time.now)
-    Capybara.send(:session_pool).each { |name, ses| ses.driver.quit }
+    #Capybara.send(:session_pool).each { |name, ses| ses.driver.quit }
   end
 
   def get_search_url(search_term, timespan)
