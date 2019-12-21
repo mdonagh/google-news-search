@@ -31,13 +31,9 @@ class GetSerpJob < ApplicationJob
     puts search_url
     session.visit search_url
     puts session.body
-    result_total = session.find('#resultStats', visible: 'hidden').base.all_text.split(' ')
+    result_total = session.find('#resultStats', visible: 'hidden').base.all_text
     puts "result_total: #{result_total}"
-    if result_total.length == 3
-      final_total = result_total[1].gsub(/[\s,]/ ,"").to_i
-    else
-      final_total = result_total[0].gsub(/[\s,]/ ,"").to_i
-    end
+    final_total = result_total.tr('^0-9', '').to_i
     SearchResult.create(search_term: search_term, total: final_total)
     search_term.update(last_check: Time.now)
     #Capybara.send(:session_pool).each { |name, ses| ses.driver.quit }
