@@ -33,7 +33,7 @@ class GetSerpJob < ApplicationJob
     puts session.body
     result_total = session.find('#resultStats', visible: 'hidden').base.all_text
     puts "result_total: #{result_total}"
-    final_total = result_total.tr('^0-9', '').to_i
+    final_total = result_total.split('(')[0].tr('^0-9', '').to_i
     SearchResult.create(search_term: search_term, total: final_total)
     search_term.update(last_check: Time.now)
     #Capybara.send(:session_pool).each { |name, ses| ses.driver.quit }
