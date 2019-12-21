@@ -1,7 +1,7 @@
 class SearchTerm < ApplicationRecord
   has_many :search_results
 
-  def fetch_serp_totals 
+  def self.fetch_serp_totals 
     SearchTerm.all.each do |search_term|
       check_interval = 24 / search_term.check_frequency
       check_time = 0
