@@ -11,14 +11,14 @@ class GetSerpJob < ApplicationJob
 
     Capybara.register_driver :headless_chrome do |app|
       capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-        chromeOptions: { args: %w(headless window-size=1024,768) },
+        chromeOptions: { args: %w(no-sandbox disable-dev-shm-usage headless) },
         loggingPrefs: { browser: 'ALL' }
       )
 
       Capybara::Selenium::Driver.new app,
         browser: :chrome,
         desired_capabilities: capabilities
-    end
+      end
 
     Capybara.default_max_wait_time = 5
     Capybara.javascript_driver = :headless_chrome # :chrome simulates behavior in browser
@@ -28,7 +28,7 @@ class GetSerpJob < ApplicationJob
     end
 
     session = Capybara::Session.new(:headless_chrome)
-    
+    puts search_url
     session.visit search_url
     result_total = session.find('#resultStats', visible: 'hidden').base.all_text.split(' ')[1].gsub(/[\s,]/ ,"").to_i
     SearchResult.create(search_term: search_term, total: result_total)
