@@ -11,6 +11,7 @@ class SearchTermsController < ApplicationController
   # GET /search_terms/1.json
   def show
     @search_results = @search_term.search_results.order('created_at DESC').paginate(page: params[:page])
+    @chart_data = Hash[@search_results.map{|result| result.created_at}.zip(@search_results.map(&:total))]
   end
 
   # GET /search_terms/new

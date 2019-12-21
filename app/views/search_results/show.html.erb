@@ -10,7 +10,5 @@
   <%= @search_result.total %>
 </p>
 
-<%= line_chart SearchResult.group_by_hour(:created_at, last: 8).count %>
-
 <%= link_to 'Edit', edit_search_result_path(@search_result) %> |
 <%= link_to 'Back', search_results_path %>
