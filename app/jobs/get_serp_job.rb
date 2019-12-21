@@ -11,7 +11,7 @@ class GetSerpJob < ApplicationJob
 
     Capybara.register_driver :headless_chrome do |app|
       capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-        chromeOptions: { args: %w(no-sandbox disable-dev-shm-usage headless) },
+        chromeOptions: { args: %w(--no-sandbox --disable-dev-shm-usage --headless) },
         loggingPrefs: { browser: 'ALL' }
       )
 
