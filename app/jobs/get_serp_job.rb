@@ -30,6 +30,7 @@ class GetSerpJob < ApplicationJob
     session = Capybara::Session.new(:headless_chrome)
     puts search_url
     session.visit search_url
+    puts session.body
     result_total = session.find('#resultStats', visible: 'hidden').base.all_text.split(' ')[1].gsub(/[\s,]/ ,"").to_i
     SearchResult.create(search_term: search_term, total: result_total)
     search_term.update(last_check: Time.now)
