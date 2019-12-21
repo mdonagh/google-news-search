@@ -4,7 +4,31 @@ class GetSerpJob < ApplicationJob
   def perform(search_term_id)
     search_term = SearchTerm.find(search_term_id)
     search_url = get_search_url(search_term.term, search_term.timespan)
-    session = Capybara::Session.new(:selenium_chrome_headless)
+
+    Capybara.register_driver :chrome do |app|
+      Capybara::Selenium::Driver.new(app, browser: :chrome)
+    end
+
+    Capybara.register_driver :headless_chrome do |app|
+      capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+        chromeOptions: { args: %w(headless window-size=1024,768) },
+        loggingPrefs: { browser: 'ALL' }
+      )
+
+      Capybara::Selenium::Driver.new app,
+        browser: :chrome,
+        desired_capabilities: capabilities
+    end
+
+    Capybara.default_max_wait_time = 5
+    Capybara.javascript_driver = :headless_chrome # :chrome simulates behavior in browser
+    Capybara.server_port = 31337 + ENV['TEST_ENV_NUMBER'].to_i
+    Capybara.configure do |config|
+      config.always_include_port = true
+    end
+
+    session = Capybara::Session.new(:headless_chrome)
+    
     session.visit search_url
     result_total = session.find('#resultStats', visible: 'hidden').base.all_text.split(' ')[1].gsub(/[\s,]/ ,"").to_i
     SearchResult.create(search_term: search_term, total: result_total)
