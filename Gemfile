@@ -16,13 +16,13 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 gem 'capybara'
 gem 'capybara-selenium'
-gem 'webdrivers'
+gem 'webdrivers', '~> 3.0'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails', '~> 5.0.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
+gem 'jbuilder', github: 'rails/jbuilder', branch: 'master'
 gem 'pry'
 gem 'awesome_print'
 gem 'delayed_job_active_record'
@@ -53,16 +53,25 @@ gem 'thin'
 # Adds support for Capybara system testing and selenium driver
 gem 'selenium-webdriver'
 # Easy installation and use of chromedriver to run system tests with Chrome
-gem 'chromedriver-helper'
+# gem 'chromedriver-helper'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+#For data visualization
+gem "chartkick"
+
+#To use group_by_day
+gem 'groupdate'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'factory_bot', '~> 5.1', '>= 5.1.1'
+  gem 'database_cleaner'
 end
 
 group :development do
